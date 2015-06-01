@@ -8,7 +8,12 @@ function _preload() {
 
 }
 
-var ship, meteors, cursors;
+var
+    ship,
+    meteors,
+    cursors,
+    score = 0,
+    scoreBoard;
 
 function _create() {
     game.add.sprite(0, 0, 'space');
@@ -27,8 +32,8 @@ function _create() {
         var meteor = meteors.create(game.world.width, game.world.randomX, 'meteor');
         meteor.body.velocity.x = -200 * rand;
 
-    }, 1000);
-
+    }, 500);
+    scoreBoard = game.add.text(18, 18, "Score " + score, { fontSize: '32px', fill: '#fff' });
     cursors = game.input.keyboard.createCursorKeys();
 
 }
@@ -36,7 +41,11 @@ function _create() {
 function _update() {
     //ship.body.velocity.y = 0;
     //ship.body.velocity.x = 0;
-
+    game.physics.arcade.overlap(ship, meteors, score10, null, this);
+    function score10() {
+        score += 10;
+        scoreBoard.text  = "Score : " + score;
+    }
     if (cursors.left.isDown) {
         ship.body.velocity.x = -200;
     }
