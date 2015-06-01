@@ -22,10 +22,10 @@ function _create() {
 
 
     var t = setInterval(function () {
-        var rand = game.rnd.realInRange(1, 10);
+        var rand = game.rnd.realInRange(1, 5);
 
         var meteor = meteors.create(game.world.width, game.world.randomX, 'meteor');
-        meteor.body.velocity.x = -150 * rand;
+        meteor.body.velocity.x = -200 * rand;
 
     }, 1000);
 
@@ -34,18 +34,18 @@ function _create() {
 }
 
 function _update() {
-    ship.body.velocity.y = 0;
-    ship.body.velocity.x = 0;
+    //ship.body.velocity.y = 0;
+    //ship.body.velocity.x = 0;
 
     if (cursors.left.isDown) {
-        ship.body.velocity.x = -300;
+        ship.body.velocity.x = -200;
     }
     else if (cursors.right.isDown) {
-        ship.body.velocity.x = 300;
+        ship.body.velocity.x = 200;
     } else if (cursors.up.isDown) {
-        ship.body.velocity.y = -300;
+        ship.body.velocity.y = -200;
 
     } else if (cursors.down.isDown) {
-        ship.body.velocity.y = 300;
+        ship.body.velocity.y = 200;
     }
 }
